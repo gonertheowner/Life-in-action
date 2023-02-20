@@ -1,0 +1,63 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Login</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+  <!-- Page Content-->
+  <section layout:fragment="body" class="py-5">
+    <section class="vh-100" style="background-color: #eee;">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-11">
+            <div class="card text-black" style="border-radius: 25px;">
+              <div class="card-body p-md-5">
+                <div th:if="${param.error}" class="alert alert-danger">
+                  Invalid username or password
+                </div>
+                <div th:if="${param.logout}" class="alert alert-info">
+                  You have been logged out
+                </div>
+
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
+                    <form role="form" method="post" th:action="@{/login-page}">
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="username">Username</label>
+                          <input type="text" id="username" placeholder="Username" class="form-control" name="username"/>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="password">Password</label>
+                          <input type="password" id="password" placeholder="Password" class="form-control" name="password"/>
+                        </div>
+                      </div>
+                      <button type="submit" value="Log in" class="btn btn-primary btn-lg">Login</button>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <a th:href="@{/register}">Don't have an account yet? Register here</a>
+                    </form>
+                  </div>
+                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                    <img src="https://img.freepik.com/free-photo/side-view-shot-fit-young-athletic-man-jumping-running_158595-4642.jpg?w=1380&t=st=1676660415~exp=1676661015~hmac=7daf99328e0e8096bd1716b5d7cd0b44f54d318bab0ea292a58bc59d6555e490"
+                         class="img-fluid" alt="...">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+</body>
+</html>

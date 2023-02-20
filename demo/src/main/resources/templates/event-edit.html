@@ -1,0 +1,47 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Event Edit</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+  <!-- Page Content-->
+  <section layout:fragment="body" class="py-5">
+    <div class="container">
+      <form role="form" method="post" th:action="@{/events/{eventId}/edit(eventId=${eventId})}" th:object="${event}">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}" name="name">
+            <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" placeholder="Type" th:field="*{type}" name="type">
+            <p th:if="${#fields.hasErrors('type')}" class="text-danger" th:errors="*{type}"></p>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="photoUrl">Photo Link</label>
+          <input type="text" class="form-control" id="photourl" placeholder="Content" th:field="*{photoUrl}" name="photourl">
+          <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
+        </div>
+        <div class="form-group mb-3">
+          <label for="startTime">Start Time</label>
+          <input type="datetime-local" class="form-control" id="startTime" placeholder="Start Time" th:field="*{startTime}" name="startTime">
+          <p th:if="${#fields.hasErrors('startTime')}" class="text-danger" th:errors="*{startTime}"></p>
+        </div>
+        <div class="form-group mb-3">
+          <label for="endTime">End Time</label>
+          <input type="datetime-local" class="form-control" id="endTime" placeholder="End Time" th:field="*{endTime}" name="endTime">
+          <p th:if="${#fields.hasErrors('endTime')}" class="text-danger" th:errors="*{endTime}"></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
